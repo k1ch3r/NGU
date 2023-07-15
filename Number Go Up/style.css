@@ -1,5 +1,6 @@
 :root {
     --mainFontColor: greenyellow;
+    --mainFontFamiliy: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     color: var(--mainFontColor);
 }
 
@@ -7,10 +8,10 @@ body {
     background-color: rgb(92, 92, 92);
     font-size: 5vh;
     text-align: center;
+    font-family: var(--mainFontFamiliy);
 }
 
 .blnScore {
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font: bold;
     font-size: 25vh;
 }
