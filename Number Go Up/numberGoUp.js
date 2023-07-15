@@ -5,18 +5,33 @@
 const mostBelovedNumberElem = document.getElementById("bln");
 const growIncrementElem = document.getElementById("incrementScore");
 const warningElem = document.getElementById("warnings")
-let mostBelovedNumber = 1.0;
+let mostBelovedNumber = 10.0;
+let mostBelovedNumberOut = mostBelovedNumber;
 let growIncrement = 0.1;
 let lastTime;
 let growButton = document.getElementById("growButton");
 let warningStrings = ["moaar moneyyyyy!", "cash cash cash", "why number no go up?", "this seems pointless?!", "I like watching numbers go up."]
 
-setInterval(mainGrowth, 1000);
-
 function updateNumber(){
-  let mostBelovedNumberOut = mostBelovedNumber.toFixed(4);
-  mostBelovedNumberElem.textContent = parseFloat(mostBelovedNumberOut); 
+  if(mostBelovedNumber < 1000){
+    let mostBelovedNumberOut = mostBelovedNumber.toFixed(2);
+    mostBelovedNumberElem.textContent = parseFloat(mostBelovedNumberOut); 
+  }
+  else if(mostBelovedNumber < 1000000){
+    document.getElementById("bln").style.color = "rgb(235, 255, 0)";
+    let mostBelovedNumberOut = (mostBelovedNumber/1000);
+    mostBelovedNumberOut = mostBelovedNumberOut.toFixed(2);
+    mostBelovedNumberElem.textContent = String(parseFloat(mostBelovedNumberOut)) + "k";   
+  }
+  else{
+    document.getElementById("bln").style.color = "rgb(235, 150, 0)";
+    let mostBelovedNumberOut = (mostBelovedNumber/1000000);
+    mostBelovedNumberOut = mostBelovedNumberOut.toFixed(2);
+    mostBelovedNumberElem.textContent = String(parseFloat(mostBelovedNumberOut)) + "M!";
+  }
 }
+
+setInterval(mainGrowth, 1000);
 
 function mainGrowth() {
   mostBelovedNumber = mostBelovedNumber + growIncrement;
@@ -35,13 +50,18 @@ growButton.onclick = function incrementUp() {
 }
 
 setInterval(gameOver, 10000)
+
 function gameOver() {
- if(mostBelovedNumber > 10000) {
-    warningElem.textContent = "okay I guess you won?"
+if(mostBelovedNumber > 1000000){
+  warningElem.textContent = "dude STOP! game is over. touch grass!"
+ }
+    
+else if(mostBelovedNumber > 10000) {
+  warningElem.textContent = "okay I guess you won?"
   }
 
-  else{
-    let randomWarning = warningStrings[Math.floor(Math.random()*warningStrings.length)];
-    warningElem.textContent = randomWarning
+else{
+  let randomWarning = warningStrings[Math.floor(Math.random()*warningStrings.length)];
+  warningElem.textContent = randomWarning
   }
 }
