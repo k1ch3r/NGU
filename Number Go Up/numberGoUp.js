@@ -32,15 +32,3 @@ growButton.onclick = function incrementUp() {
     warningElem.textContent = "you are too poor :(";
   }
 }
-
-
-/*function update(time) {
-  if (lastTime != null) {
-    const delta = time - lastTime
-    if (isLose()) handleLose()
-  }
-
-  lastTime = time
-  window.requestAnimationFrame(update)
-}
-*/
