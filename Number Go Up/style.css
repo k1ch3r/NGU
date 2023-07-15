@@ -6,7 +6,7 @@
 
 body {
     background-color: rgb(92, 92, 92);
-    font-size: 5vh;
+    font-size: 20px;
     text-align: center;
     font-family: var(--mainFontFamiliy);
 }
@@ -14,6 +14,19 @@ body {
 .blnScore {
     font: bold;
     font-size: 25vh;
+}
+
+.otherNumbers {
+    display: flex;
+    gap: 2vw;
+    justify-content: center;
+
+}
+
+.buttons {
+    display: flex
+    gap: 2vw;
+    justify-self: start;
 }
 
 #warnings {

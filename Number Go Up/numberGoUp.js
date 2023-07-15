@@ -3,65 +3,97 @@
 // obviously we need number to go up
 
 const mostBelovedNumberElem = document.getElementById("bln");
-const growIncrementElem = document.getElementById("incrementScore");
-const warningElem = document.getElementById("warnings")
-let mostBelovedNumber = 10.0;
-let mostBelovedNumberOut = mostBelovedNumber;
-let growIncrement = 0.1;
-let lastTime;
-let growButton = document.getElementById("growButton");
-let warningStrings = ["moaar moneyyyyy!", "cash cash cash", "why number no go up?", "this seems pointless?!", "I like watching numbers go up."]
+const incrementScoreElem = document.getElementById("incrementScore");
+const speedScoreElem = document.getElementById("speedScore");
+const warningElem = document.getElementById("warnings");
+const upgrade1CostElem = document.getElementById("upgrade1Cost");
+const upgrade2CostElem = document.getElementById("upgrade2Cost");
+const growButton = document.getElementById("growButton");
+const speedButton = document.getElementById("speedButton");
 
-function updateNumber(){
-  if(mostBelovedNumber < 1000){
-    let mostBelovedNumberOut = mostBelovedNumber.toFixed(2);
-    mostBelovedNumberElem.textContent = parseFloat(mostBelovedNumberOut); 
+let mostBelovedNumber = 10.0;
+let growIncrement = 0.1;
+let growthSpeed = 4000;
+let speedIncrement = 500;
+let upgrade1Cost = 1;
+let upgrade2Cost = 5;
+let warningStrings = ["moaar moneyyyyy!", "cash cash cash", "why number no go up?", "this seems pointless?!", "I like watching numbers go up."];
+let mostBelovedNumberOut = mostBelovedNumber;
+let growthInterval;
+
+growButton.onclick = function incrementUp() {
+  if (mostBelovedNumber > upgrade1Cost) {
+    mostBelovedNumber = mostBelovedNumber - upgrade1Cost
+    updateNumber()
+    upgrade1Cost = upgrade1Cost * 1.035
+    upgrade1CostElem.textContent = `Cost: ${upgrade1Cost.toFixed(2)}`
+    growIncrement = growIncrement + Math.max((growIncrement * 0.045), 0.01)
+    incrementScoreElem.textContent = "Growth: " + growIncrement.toFixed(2)
   }
-  else if(mostBelovedNumber < 1000000){
-    document.getElementById("bln").style.color = "rgb(235, 255, 0)";
-    let mostBelovedNumberOut = (mostBelovedNumber/1000);
-    mostBelovedNumberOut = mostBelovedNumberOut.toFixed(2);
-    mostBelovedNumberElem.textContent = String(parseFloat(mostBelovedNumberOut)) + "k";   
-  }
-  else{
-    document.getElementById("bln").style.color = "rgb(235, 150, 0)";
-    let mostBelovedNumberOut = (mostBelovedNumber/1000000);
-    mostBelovedNumberOut = mostBelovedNumberOut.toFixed(2);
-    mostBelovedNumberElem.textContent = String(parseFloat(mostBelovedNumberOut)) + "M!";
+  else {
+    warningElem.textContent = "you are too poor :("
   }
 }
 
-setInterval(mainGrowth, 1000);
+speedButton.onclick = function speedUp() {
+  if (mostBelovedNumber > upgrade2Cost && growthSpeed > 500) {
+    mostBelovedNumber = mostBelovedNumber - upgrade2Cost
+    updateNumber()
+    upgrade2Cost = upgrade2Cost * 1.5
+    upgrade2CostElem.textContent = `Cost: ${upgrade2Cost.toFixed(2)}`
+    growthSpeed = growthSpeed - speedIncrement
+    speedScoreElem.textContent = "Interval: " + (growthSpeed/1000).toFixed(2)
+    speedIncrement = speedIncrement / 1.15
+    clearInterval(growthInterval);
+    growthInterval = setInterval(mainGrowth, growthSpeed); 
+  }
+  else if(mostBelovedNumber < upgrade2Cost){
+    warningElem.textContent = "you are too poor :("
+  }
+  else{
+    warningElem.textContent = "you are too fast xD"
+  }
+}
+
+function updateNumber() {
+  if (mostBelovedNumber < 1000) {
+    let mostBelovedNumberOut = mostBelovedNumber.toFixed(2)
+    mostBelovedNumberElem.textContent = parseFloat(mostBelovedNumberOut)
+  }
+  else if (mostBelovedNumber < 1000000) {
+    document.getElementById("bln").style.color = "rgb(235, 255, 0)"
+    let mostBelovedNumberOut = (mostBelovedNumber / 1000)
+    mostBelovedNumberOut = mostBelovedNumberOut.toFixed(2)
+    mostBelovedNumberElem.textContent = String(parseFloat(mostBelovedNumberOut)) + "k"
+  }
+  else {
+    document.getElementById("bln").style.color = "rgb(235, 150, 0)"
+    let mostBelovedNumberOut = (mostBelovedNumber / 1000000)
+    mostBelovedNumberOut = mostBelovedNumberOut.toFixed(2)
+    mostBelovedNumberElem.textContent = String(parseFloat(mostBelovedNumberOut)) + "M!"
+  }
+}
+
 
 function mainGrowth() {
-  mostBelovedNumber = mostBelovedNumber + growIncrement;
+  mostBelovedNumber = mostBelovedNumber + growIncrement
   updateNumber();
 }
 
-growButton.onclick = function incrementUp() {
-  if(mostBelovedNumber > 1) {
-    growIncrement = growIncrement + Math.max((growIncrement*0.05), 0.01);
-    growIncrementElem.textContent = "Growth: " + growIncrement.toFixed(2);     mostBelovedNumber--
-    updateNumber();
-  }
-  else{
-    warningElem.textContent = "you are too poor :(";
-  }
-}
 
 setInterval(gameOver, 10000)
 
 function gameOver() {
-if(mostBelovedNumber > 1000000){
-  warningElem.textContent = "dude STOP! game is over. touch grass!"
- }
-    
-else if(mostBelovedNumber > 10000) {
-  warningElem.textContent = "okay I guess you won?"
+  if (mostBelovedNumber > 1000000) {
+    warningElem.textContent = "dude STOP! game is over. touch grass!"
   }
 
-else{
-  let randomWarning = warningStrings[Math.floor(Math.random()*warningStrings.length)];
-  warningElem.textContent = randomWarning
+  else if (mostBelovedNumber > 10000) {
+    warningElem.textContent = "okay I guess you won?"
+  }
+
+  else {
+    let randomWarning = warningStrings[Math.floor(Math.random() * warningStrings.length)];
+    warningElem.textContent = randomWarning
   }
 }
