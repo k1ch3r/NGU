@@ -24,7 +24,7 @@ body {
 }
 
 .buttons {
-    display: flex
+    display: flex;
     gap: 2vw;
     justify-self: start;
 }
