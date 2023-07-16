@@ -1,6 +1,6 @@
 :root {
     --mainFontColor: greenyellow;
-    --mainFontFamiliy: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    --mainFontFamiliy: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
     color: var(--mainFontColor);
 }
 
@@ -11,22 +11,19 @@ body {
     font-family: var(--mainFontFamiliy);
 }
 
+.container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    padding-top: 1vh;
+    padding-bottom: 3vh;
+}
+
 .blnScore {
-    font: bold;
     font-size: 25vh;
 }
 
-.otherNumbers {
-    display: flex;
-    gap: 2vw;
-    justify-content: center;
-
-}
-
-.buttons {
-    display: flex;
-    gap: 2vw;
-    justify-self: start;
+.footer{
+    display: grid;
 }
 
 #warnings {
