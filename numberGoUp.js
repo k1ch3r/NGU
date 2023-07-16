@@ -26,9 +26,9 @@ growButton.onclick = function incrementUp() {
   if (mostBelovedNumber > upgrade1Cost) {
     mostBelovedNumber = mostBelovedNumber - upgrade1Cost;
     updateNumber();
-    upgrade1Cost = upgrade1Cost * 1.80375;
+    upgrade1Cost = upgrade1Cost * 1.10375;
     upgrade1CostElem.textContent = `Cost: ${upgrade1Cost.toFixed(2)}`;
-    growIncrement = growIncrement * 1.8470;
+    growIncrement = growIncrement * 1.10470;
     incrementScoreElem.textContent = "Growth: " + growIncrement.toFixed(2);
   }
   else {
