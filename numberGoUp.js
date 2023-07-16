@@ -28,7 +28,7 @@ growButton.onclick = function incrementUp() {
     updateNumber();
     upgrade1Cost = upgrade1Cost * 1.0375;
     upgrade1CostElem.textContent = `Cost: ${upgrade1Cost.toFixed(2)}`;
-    growIncrement = growIncrement * 1.044;
+    growIncrement = growIncrement * 1.047;
     incrementScoreElem.textContent = "Growth: " + growIncrement.toFixed(2);
   }
   else {
@@ -44,7 +44,7 @@ speedButton.onclick = function speedUp() {
     upgrade2CostElem.textContent = `Cost: ${upgrade2Cost.toFixed(2)}`;
     growthSpeed = growthSpeed - speedIncrement;
     speedScoreElem.textContent = "Interval: " + (growthSpeed/1000).toFixed(2);
-    speedIncrement = speedIncrement / 1.165;
+    speedIncrement = speedIncrement / 1.147;
     clearInterval(growthInterval);;
     growthInterval = setInterval(mainGrowth, growthSpeed);
     speedButton.textContent = "Grow faster!";
