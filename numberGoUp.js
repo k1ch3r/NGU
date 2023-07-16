@@ -12,13 +12,13 @@ const growButton = document.getElementById("growButton");
 const speedButton = document.getElementById("speedButton");
 const forceButton = document.getElementById("forceButton")
 
-let mostBelovedNumber = 10.0;
+let mostBelovedNumber = 671.0;
 let growIncrement = 0.25;
 let growthSpeed = 4000;
 let speedIncrement = 500;
 let upgrade1Cost = 1;
 let upgrade2Cost = 5;
-let warningStrings = ["moaar moneyyyyy!", "cash cash cash", "why number no go up?", "this seems pointless?!", "I like watching numbers go up."];
+let warningStrings = ["moaar moneyyyyy!", "cash cash cash", "why number no go up?", "this seems pointless?!", "I like watching numbers go up.", "css is annoying. did you know that?", "don't look at my sourcecode okay", "it's not about size.", "it's about value. big value.", "coming up with strings to display here.", "this is a one liner.", "do you have anything funny to put here?", "you got to spend number to make number.", "best strategy: don't play!"];
 let mostBelovedNumberOut = mostBelovedNumber;
 let growthInterval;
 
@@ -26,9 +26,9 @@ growButton.onclick = function incrementUp() {
   if (mostBelovedNumber > upgrade1Cost) {
     mostBelovedNumber = mostBelovedNumber - upgrade1Cost;
     updateNumber();
-    upgrade1Cost = upgrade1Cost * 1.035;
+    upgrade1Cost = upgrade1Cost * 1.0375;
     upgrade1CostElem.textContent = `Cost: ${upgrade1Cost.toFixed(2)}`;
-    growIncrement = growIncrement + (growIncrement * 0.045);
+    growIncrement = growIncrement * 1.044;
     incrementScoreElem.textContent = "Growth: " + growIncrement.toFixed(2);
   }
   else {
@@ -37,14 +37,14 @@ growButton.onclick = function incrementUp() {
 }
 
 speedButton.onclick = function speedUp() {
-  if (mostBelovedNumber > upgrade2Cost && growthSpeed > 500) {
+  if (mostBelovedNumber > upgrade2Cost && growthSpeed > 100) {
     mostBelovedNumber = mostBelovedNumber - upgrade2Cost;
     updateNumber();
-    upgrade2Cost = upgrade2Cost * 1.5;
+    upgrade2Cost = upgrade2Cost * 1.6;
     upgrade2CostElem.textContent = `Cost: ${upgrade2Cost.toFixed(2)}`;
     growthSpeed = growthSpeed - speedIncrement;
     speedScoreElem.textContent = "Interval: " + (growthSpeed/1000).toFixed(2);
-    speedIncrement = speedIncrement / 1.15;
+    speedIncrement = speedIncrement / 1.165;
     clearInterval(growthInterval);;
     growthInterval = setInterval(mainGrowth, growthSpeed);
     speedButton.textContent = "Grow faster!";
