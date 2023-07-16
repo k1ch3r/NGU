@@ -87,7 +87,7 @@ function mainGrowth() {
 setInterval(gameOver, 10000)
 
 function gameOver() {
-  if (mostBelovedNumber > 1000000) {
+  if (mostBelovedNumber > 100000000) {
     warningElem.textContent = "dude STOP! game is over. touch grass!";
   }
 
