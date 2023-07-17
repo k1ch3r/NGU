@@ -10,7 +10,7 @@ const growButton = document.getElementById("growButton");
 const speedButton = document.getElementById("speedButton");
 const forceButton = document.getElementById("forceButton")
 
-let mostBelovedNumber = 6701.0;
+let mostBelovedNumber = 671.0;
 let growIncrement = 0.25;
 let growthSpeed = 4000;
 let speedIncrement = 500;
