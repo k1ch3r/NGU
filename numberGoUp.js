@@ -36,17 +36,17 @@ function readifyNo(unformatedNumber) {
   else if((unformatedNumber < 1000000000)){
     unformatedNumber = unformatedNumber / 1000000;
     unformatedNumber = unformatedNumber.toFixed(2);
-    return `(${unformatedNumber}M`;
+    return `${unformatedNumber}M`;
   }
   else if((unformatedNumber < 1000000000000)){
     unformatedNumber = unformatedNumber / 1000000000;
     unformatedNumber = unformatedNumber.toFixed(2);
-    return `(${unformatedNumber}G`;
+    return `${unformatedNumber}G`;
   }
   else {
     unformatedNumber = unformatedNumber / 1000000000000;
     unformatedNumber = unformatedNumber.toFixed(2);
-    return `(${unformatedNumber}T`;
+    return `${unformatedNumber}T`;
   }
 }
 
