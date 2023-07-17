@@ -10,7 +10,7 @@ const growButton = document.getElementById("growButton");
 const speedButton = document.getElementById("speedButton");
 const forceButton = document.getElementById("forceButton")
 
-let mostBelovedNumber = 671.0;
+let mostBelovedNumber = 6701.0;
 let growIncrement = 0.25;
 let growthSpeed = 4000;
 let speedIncrement = 500;
@@ -24,26 +24,26 @@ let growthInterval;
 
 
 function readifyNo(unformatedNumber) {
-  if(1000 > unformatedNumber > 0) {
+  if(unformatedNumber < 1000 && unformatedNumber > 0) {
     unformatedNumber = unformatedNumber.toFixed(2);
     return `${unformatedNumber}`;
   }
-  if(1000000 > unformatedNumber > 1000) {
+  else if(unformatedNumber < 1000000) {
     unformatedNumber = unformatedNumber / 1000;
     unformatedNumber = unformatedNumber.toFixed(2);
-    return `${unformatedNumber}k`;
+    return `${parseFloat(unformatedNumber)}k`;
   }
-  else if(unformatedNumber > 1000000){
+  else if((unformatedNumber < 1000000000)){
     unformatedNumber = unformatedNumber / 1000000;
     unformatedNumber = unformatedNumber.toFixed(2);
     return `(${unformatedNumber}M`;
   }
-  else if(unformatedNumber > 1000000000){
+  else if((unformatedNumber < 1000000000000)){
     unformatedNumber = unformatedNumber / 1000000000;
     unformatedNumber = unformatedNumber.toFixed(2);
     return `(${unformatedNumber}G`;
   }
-  else if(unformatedNumber > 1000000000000){
+  else {
     unformatedNumber = unformatedNumber / 1000000000000;
     unformatedNumber = unformatedNumber.toFixed(2);
     return `(${unformatedNumber}T`;

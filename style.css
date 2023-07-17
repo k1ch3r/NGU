@@ -13,8 +13,8 @@ body {
 
 .container {
     display: grid;
-    grid-template-columns: auto auto auto;
-    padding-top: 1vh;
+    grid-template-columns: 1fr 1fr 1fr;;
+    padding-top: 4vh;
     padding-bottom: 3vh;
 }
 
