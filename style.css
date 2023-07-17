@@ -1,11 +1,29 @@
 :root {
-    --mainFontColor: greenyellow;
-    --mainFontFamiliy: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-    color: var(--mainFontColor);
-}
+    --mainFontColor: hsl(123, 100%, 50%);
+    --mainFontFamily: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  }
+  
+  @keyframes fontColorShift {
+    0% {
+      color: hsl(123, 100%, 75%);
+    }
+    25% {
+      color: hsl(360, 100%, 75%);
+    }
+    50% {
+      color: hsl(123, 100%, 75%);
+    }
+    75% {
+      color: hsl(0, 100%, 75%);
+    }
+    100% {
+      color: hsl(123, 100%, 75%);
+    }
+  }
 
 body {
-    background-color: rgb(92, 92, 92);
+    background-color: hsl(0, 0%, 20%);
+    animation: fontColorShift 40s infinite;
     font-size: 20px;
     text-align: center;
     font-family: var(--mainFontFamiliy);
@@ -13,8 +31,8 @@ body {
 
 .container {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;;
-    padding-top: 4vh;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding-top: 14vh;
     padding-bottom: 3vh;
 }
 
@@ -22,7 +40,7 @@ body {
     font-size: 25vh;
 }
 
-.footer{
+.footer {
     display: grid;
 }
 
