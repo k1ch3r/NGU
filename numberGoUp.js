@@ -1,6 +1,4 @@
-// I am testing fleet today
-
-// obviously we need number to go up
+// Setting vars
 
 const mostBelovedNumberElem = document.getElementById("bln");
 const incrementScoreElem = document.getElementById("incrementScore");
@@ -22,12 +20,42 @@ let warningStrings = ["moaar moneyyyyy!", "cash cash cash", "why number no go up
 let mostBelovedNumberOut = mostBelovedNumber;
 let growthInterval;
 
+// functions
+
+
+function readifyNo(unformatedNumber) {
+  if(1000 > unformatedNumber > 0) {
+    unformatedNumber = unformatedNumber.toFixed(2);
+    return `${unformatedNumber}`;
+  }
+  if(1000000 > unformatedNumber > 1000) {
+    unformatedNumber = unformatedNumber / 1000;
+    unformatedNumber = unformatedNumber.toFixed(2);
+    return `${unformatedNumber}k`;
+  }
+  else if(unformatedNumber > 1000000){
+    unformatedNumber = unformatedNumber / 1000000;
+    unformatedNumber = unformatedNumber.toFixed(2);
+    return `(${unformatedNumber}M`;
+  }
+  else if(unformatedNumber > 1000000000){
+    unformatedNumber = unformatedNumber / 1000000000;
+    unformatedNumber = unformatedNumber.toFixed(2);
+    return `(${unformatedNumber}G`;
+  }
+  else if(unformatedNumber > 1000000000000){
+    unformatedNumber = unformatedNumber / 1000000000000;
+    unformatedNumber = unformatedNumber.toFixed(2);
+    return `(${unformatedNumber}T`;
+  }
+}
+
 growButton.onclick = function incrementUp() {
   if (mostBelovedNumber > upgrade1Cost) {
     mostBelovedNumber = mostBelovedNumber - upgrade1Cost;
     updateNumber();
     upgrade1Cost = upgrade1Cost * 1.10375;
-    upgrade1CostElem.textContent = `Cost: ${upgrade1Cost.toFixed(2)}`;
+    upgrade1CostElem.textContent = `Cost: ${readifyNo(upgrade1Cost)}`;
     growIncrement = growIncrement * 1.10470;
     incrementScoreElem.textContent = "Growth: " + growIncrement.toFixed(2);
   }
@@ -41,7 +69,7 @@ speedButton.onclick = function speedUp() {
     mostBelovedNumber = mostBelovedNumber - upgrade2Cost;
     updateNumber();
     upgrade2Cost = upgrade2Cost * 1.6;
-    upgrade2CostElem.textContent = `Cost: ${upgrade2Cost.toFixed(2)}`;
+    upgrade2CostElem.textContent = `Cost:${readifyNo(upgrade2Cost)}`;
     growthSpeed = growthSpeed - speedIncrement;
     speedScoreElem.textContent = "Interval: " + (growthSpeed/1000).toFixed(2);
     speedIncrement = speedIncrement / 1.147;
@@ -60,22 +88,8 @@ speedButton.onclick = function speedUp() {
 forceButton.onclick = mainGrowth;
 
 function updateNumber() {
-  if (mostBelovedNumber < 1000) {
-    let mostBelovedNumberOut = mostBelovedNumber.toFixed(2);
-    mostBelovedNumberElem.textContent = parseFloat(mostBelovedNumberOut);
-  }
-  else if (mostBelovedNumber < 1000000) {
-    document.getElementById("bln").style.color = "rgb(235, 255, 0)";
-    let mostBelovedNumberOut = (mostBelovedNumber / 1000);
-    mostBelovedNumberOut = mostBelovedNumberOut.toFixed(2);
-    mostBelovedNumberElem.textContent = String(parseFloat(mostBelovedNumberOut)) + "k";
-  }
-  else {
-    document.getElementById("bln").style.color = "rgb(235, 150, 0)";
-    let mostBelovedNumberOut = (mostBelovedNumber / 1000000);
-    mostBelovedNumberOut = mostBelovedNumberOut.toFixed(2);
-    mostBelovedNumberElem.textContent = String(parseFloat(mostBelovedNumberOut)) + "M!";
-  }
+  let mostBelovedNumberOut = readifyNo(mostBelovedNumber);
+  mostBelovedNumberElem.textContent = mostBelovedNumberOut;
 }
 
 
