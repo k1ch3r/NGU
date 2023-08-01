@@ -16,7 +16,7 @@ let growthSpeed = 4000;
 let speedIncrement = 500;
 let upgrade1Cost = 1;
 let upgrade2Cost = 5;
-let warningStrings = ["moaar moneyyyyy!", "cash cash cash", "why number no go up?", "this seems pointless?!", "I like watching numbers go up.", "css is annoying. did you know that?", "don't look at my sourcecode okay", "it's not about size.", "it's about value. big value.", "coming up with strings to display here.", "this is a one liner.", "do you have anything funny to put here?", "you got to spend number to make number.", "best strategy: don't play!"];
+let warningStrings = ["moaar moneyyyyy!", "cash cash cash", "why number no go up?", "this seems pointless?!", "I like watching numbers go up.", "css is annoying. did you know that?", "don't look at my sourcecode okay", "it's not about size.", "it's about value. big value.", "coming up with strings to display here.", "this is a one liner.", "do you have anything funny to put here?", "you got to spend number to make number.", "best strategy: don't play!", "have you seen Satoshi?", "hurry up: they are printing faster!"];
 let mostBelovedNumberOut = mostBelovedNumber;
 let growthInterval;
 
