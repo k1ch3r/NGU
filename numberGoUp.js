@@ -57,7 +57,7 @@ growButton.onclick = function incrementUp() {
     upgrade1Cost = upgrade1Cost * 1.10375;
     upgrade1CostElem.textContent = `Cost: ${readifyNo(upgrade1Cost)}`;
     growIncrement = growIncrement * 1.10470;
-    incrementScoreElem.textContent = "Growth: " + growIncrement.toFixed(2);
+    incrementScoreElem.textContent = `Growth: ${readifyNo(growIncrement)}`;
   }
   else {
     warningElem.textContent = "you are too poor :(";
